@@ -62,26 +62,46 @@ let job = 'teacher';
 const year = 1997;
 
 // Functions
-console.log(addDec1(2,3));
-console.log(addExpr(2,3));
-console.log(addArrow(2,3));
+// console.log(addDec1(2,3));
+// console.log(addExpr(2,3));
+// console.log(addArrow(2,3));
 
-function addDec1(a,b) { 
-  return a + b;
-}
+// function addDec1(a,b) { 
+//   return a + b;
+// }
 
 
-// this const function expression won't work either because it's literally a const..
-// the function is basically contained inside of a variable, so the hoistin that applies
-// to the type of function is what applies to the expression
+// // this const function expression won't work either because it's literally a const..
+// // the function is basically contained inside of a variable, so the hoistin that applies
+// // to the type of function is what applies to the expression
 
-const addExpr = function (a, b) {
-  return a + b;
-};
+// const addExpr = function (a, b) {
+//   return a + b;
+// };
 
-var addArrow = (a,b) => a + b;
+// var addArrow = (a,b) => a + b;
 // The above will say, addArrow is not a function
 // Again the hoisting rule is taken dependent on the actual variable itself
 // In this case it's a var. So the value of the var before it's defined will be 
 // undefined. So the addArrow basically = undefined ..
 // That's why we receive the error of 'addArrow' is not a function in the cl.
+
+
+
+// Example 
+
+
+// The following code if real example is very dangerous to use
+// The reason for this is that
+console.log(undefined);
+if(!numProducts) deleteShoppingCart();
+
+var numProducts = 10;
+
+function deleteShoppingCart() { 
+  console.log(`All products deleted!`);
+}
+
+function deleteShoppingCart() {
+  console.log(`All products deleted!`);
+}

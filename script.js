@@ -123,14 +123,14 @@ console.log('NEW --------------------');
 // console.log(z===window.z);
 
 
-console.log(this);
+// console.log(this);
 
 const calcAge = function(birthYear) { 
 
   // as we know a 'this' in a regular function
   // will === undefined
   console.log(2037- birthYear);
-  console.log(this);
+  // console.log(this);
 }
 
 // The arrow function will be window 
@@ -138,8 +138,50 @@ const calcAge = function(birthYear) {
 // and the this in the global window is === to the window in the browser in this case
 const calcAgeArrow = birthYear => { 
  console.log(2037 - birthYear);
-  console.log(this);
+  // console.log(this);
 }
  
 
 calcAgeArrow(1993);
+
+
+
+const jonas = {
+  year: 1991,
+  calcAge: function() { 
+    console.log(this);
+    console.log(2037 - this.year);
+  }
+}
+
+
+// Using a this in this scenario, the this is === to the actual object itself,
+// So this will === jonas, meaning that it should print jonas object
+jonas.calcAge();
+
+
+
+const matilda = { 
+  year: 2017,
+}
+
+
+// this is called method borrowing
+matilda.calcAge = jonas.calcAge;
+matilda.calcAge();
+
+
+const f = jonas.calcAge;
+f();
+
+
+
+
+// this keyword points to the object calling to the method 
+// (e.g jonas)
+// this means that it does NOT point at the object in which we wrote the method 
+// (e.g not calcAge)
+
+
+
+

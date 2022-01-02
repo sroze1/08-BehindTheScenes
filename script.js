@@ -125,54 +125,47 @@ console.log('NEW --------------------');
 
 // console.log(this);
 
-const calcAge = function(birthYear) { 
+// const calcAge = function(birthYear) { 
 
-  // as we know a 'this' in a regular function
-  // will === undefined
-  console.log(2037- birthYear);
-  // console.log(this);
-}
+//   // as we know a 'this' in a regular function
+//   // will === undefined
+//   console.log(2037- birthYear);
+//   // console.log(this);
+// }
 
-// The arrow function will be window 
-// Because it's parent is the global object
-// and the this in the global window is === to the window in the browser in this case
-const calcAgeArrow = birthYear => { 
- console.log(2037 - birthYear);
-  // console.log(this);
-}
+// // The arrow function will be window 
+// // Because it's parent is the global object
+// // and the this in the global window is === to the window in the browser in this case
+// const calcAgeArrow = birthYear => { 
+//  console.log(2037 - birthYear);
+//   // console.log(this);
+// }
  
 
-calcAgeArrow(1993);
+// calcAgeArrow(1993);
 
 
 
-const jonas = {
-  year: 1991,
-  calcAge: function() { 
-    console.log(this);
-    console.log(2037 - this.year);
-  }
-}
 
 
-// Using a this in this scenario, the this is === to the actual object itself,
-// So this will === jonas, meaning that it should print jonas object
-jonas.calcAge();
+// // Using a this in this scenario, the this is === to the actual object itself,
+// // So this will === jonas, meaning that it should print jonas object
+// jonas.calcAge();
 
 
 
-const matilda = { 
-  year: 2017,
-}
+// const matilda = { 
+//   year: 2017,
+// }
 
 
-// this is called method borrowing
-matilda.calcAge = jonas.calcAge;
-matilda.calcAge();
+// // this is called method borrowing
+// matilda.calcAge = jonas.calcAge;
+// matilda.calcAge();
 
 
-const f = jonas.calcAge;
-f();
+// const f = jonas.calcAge;
+// f();
 
 
 
@@ -185,3 +178,37 @@ f();
 
 
 
+// pitfalls of arrow fuctions compared to regular functions: 
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+
+    const isMill = function() {
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMill();
+  },
+
+greet: () => console.log(`Hey ${this.firstName}`),
+};
+
+
+
+jonas.greet();
+jonas.calcAge();
+
+
+
+
+// an arrow function does not get it's own this keyword
+// Instead it gets it from it's parent scope
+// The parent scope in this case is the global scope
+// This is because the object isn't a code block .. it's just an object literal. So all 
+// of this is still a part of the global keyword
+
+
+// So to repeat, an object does not have the same scope of it's own.. it's not a block
+// An object is not scope within the code, it's still treated as a global scope

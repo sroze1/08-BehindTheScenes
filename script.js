@@ -186,9 +186,24 @@ const jonas = {
     console.log(this);
     console.log(2037 - this.year);
 
-    const isMill = function() {
-      console.log(this.year >= 1981 && this.year <= 1996);
-    };
+
+// SOLUTION 1: CREATE A SELF KEYWORD THAT HAS TH EVARIABLE VALUE OF THE THIS KEYWORD.
+    // const self = this;
+    // const isMill = function() {
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+
+    // };
+
+
+// SOLTUION 2: USE A FUCKING ARROW CHAIN AFTER HE CLEARLY JUST SAID DON'T USE ARROW FUNCTIONS.
+// LOL
+// ACTUALLY HE MADE PERFECT SENSE MAYBE I NEED TO HUMBLE MYSELF WHEN LISTENING TO THIS FUCKER
+
+
+ const isMill =  () => {
+   console.log(this.year >= 1981 && this.year <= 1996);
+ };
+
     isMill();
   },
 

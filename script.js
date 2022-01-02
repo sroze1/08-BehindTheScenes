@@ -53,13 +53,13 @@
 console.log('NEW --------------------');
 
 // Variables
-console.log(me);
-// console.log(job);
-// console.log(year);
+// console.log(me);
+// // console.log(job);
+// // console.log(year);
 
-var me = 'Sheroze';
-let job = 'teacher';
-const year = 1997;
+// var me = 'Sheroze';
+// let job = 'teacher';
+// const year = 1997;
 
 // Functions
 // console.log(addDec1(2,3));
@@ -93,15 +93,53 @@ const year = 1997;
 
 // The following code if real example is very dangerous to use
 // The reason for this is that
-console.log(undefined);
-if(!numProducts) deleteShoppingCart();
+// using a var before it is declared, the initial value starts at undefined..
 
-var numProducts = 10;
+//Because of this, the if statement will always be at 'false', so 
+// all the products will always be deleted.
+// console.log(undefined);
+// if(!numProducts) deleteShoppingCart();
 
-function deleteShoppingCart() { 
-  console.log(`All products deleted!`);
+// var numProducts = 10;
+
+// function deleteShoppingCart() { 
+//   console.log(`All products deleted!`);
+// }
+
+// // So what are the best practices?
+// // Don't use var.. 
+// // Use const!
+// // Only use let if you have to
+// // Declare code at the top of the code
+
+
+// var x = 1;
+// let y = 2;
+// const z = 3;
+
+
+// console.log(x===window.x);
+// console.log(y===window.y);
+// console.log(z===window.z);
+
+
+console.log(this);
+
+const calcAge = function(birthYear) { 
+
+  // as we know a 'this' in a regular function
+  // will === undefined
+  console.log(2037- birthYear);
+  console.log(this);
 }
 
-function deleteShoppingCart() {
-  console.log(`All products deleted!`);
+// The arrow function will be window 
+// Because it's parent is the global object
+// and the this in the global window is === to the window in the browser in this case
+const calcAgeArrow = birthYear => { 
+ console.log(2037 - birthYear);
+  console.log(this);
 }
+ 
+
+calcAgeArrow(1993);

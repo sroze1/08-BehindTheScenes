@@ -179,12 +179,12 @@ console.log('NEW --------------------');
 
 
 // pitfalls of arrow fuctions compared to regular functions: 
-const jonas = {
-  firstName: 'Jonas',
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
+// const jonas = {
+//   firstName: 'Jonas',
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
 
 
 // SOLUTION 1: CREATE A SELF KEYWORD THAT HAS TH EVARIABLE VALUE OF THE THIS KEYWORD.
@@ -200,24 +200,37 @@ const jonas = {
 // ACTUALLY HE MADE PERFECT SENSE MAYBE I NEED TO HUMBLE MYSELF WHEN LISTENING TO THIS FUCKER
 
 
- const isMill =  () => {
-   console.log(this.year >= 1981 && this.year <= 1996);
- };
+//  const isMill =  () => {
+//    console.log(this.year >= 1981 && this.year <= 1996);
+//  };
 
-    isMill();
-  },
+//     isMill();
+//   },
 
-greet: () => console.log(`Hey ${this.firstName}`),
-};
-
-
-
-jonas.greet();
-jonas.calcAge();
+// greet: () => console.log(`Hey ${this.firstName}`),
+// };
 
 
 
+// jonas.greet();
+// jonas.calcAge();
 
+
+// // Arguments keyword
+
+// const addExpr= function (a,b) { 
+//   console.log(arguments);
+//   return a + b;
+// };
+// addExpr(2,5, 9, 293, 283);
+
+
+// var addArrow = (a, b) => { 
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// addArrow(2, 5);
 // an arrow function does not get it's own this keyword
 // Instead it gets it from it's parent scope
 // The parent scope in this case is the global scope
@@ -227,3 +240,23 @@ jonas.calcAge();
 
 // So to repeat, an object does not have the same scope of it's own.. it's not a block
 // An object is not scope within the code, it's still treated as a global scope
+
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+
+const me = {
+  name: 'Jonas',
+  age: 30,
+};
+
+const friend = me;
+friend.age = 27;
+
+
+console.log(`Friend:`, friend);
+console.log(`me:`, me);

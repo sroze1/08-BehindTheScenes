@@ -66,10 +66,9 @@ console.log('NEW --------------------');
 // console.log(addExpr(2,3));
 // console.log(addArrow(2,3));
 
-// function addDec1(a,b) { 
+// function addDec1(a,b) {
 //   return a + b;
 // }
-
 
 // // this const function expression won't work either because it's literally a const..
 // // the function is basically contained inside of a variable, so the hoistin that applies
@@ -82,50 +81,44 @@ console.log('NEW --------------------');
 // var addArrow = (a,b) => a + b;
 // The above will say, addArrow is not a function
 // Again the hoisting rule is taken dependent on the actual variable itself
-// In this case it's a var. So the value of the var before it's defined will be 
+// In this case it's a var. So the value of the var before it's defined will be
 // undefined. So the addArrow basically = undefined ..
 // That's why we receive the error of 'addArrow' is not a function in the cl.
 
-
-
-// Example 
-
+// Example
 
 // The following code if real example is very dangerous to use
 // The reason for this is that
 // using a var before it is declared, the initial value starts at undefined..
 
-//Because of this, the if statement will always be at 'false', so 
+//Because of this, the if statement will always be at 'false', so
 // all the products will always be deleted.
 // console.log(undefined);
 // if(!numProducts) deleteShoppingCart();
 
 // var numProducts = 10;
 
-// function deleteShoppingCart() { 
+// function deleteShoppingCart() {
 //   console.log(`All products deleted!`);
 // }
 
 // // So what are the best practices?
-// // Don't use var.. 
+// // Don't use var..
 // // Use const!
 // // Only use let if you have to
 // // Declare code at the top of the code
-
 
 // var x = 1;
 // let y = 2;
 // const z = 3;
 
-
 // console.log(x===window.x);
 // console.log(y===window.y);
 // console.log(z===window.z);
 
-
 // console.log(this);
 
-// const calcAge = function(birthYear) { 
+// const calcAge = function(birthYear) {
 
 //   // as we know a 'this' in a regular function
 //   // will === undefined
@@ -133,52 +126,37 @@ console.log('NEW --------------------');
 //   // console.log(this);
 // }
 
-// // The arrow function will be window 
+// // The arrow function will be window
 // // Because it's parent is the global object
 // // and the this in the global window is === to the window in the browser in this case
-// const calcAgeArrow = birthYear => { 
+// const calcAgeArrow = birthYear => {
 //  console.log(2037 - birthYear);
 //   // console.log(this);
 // }
- 
 
 // calcAgeArrow(1993);
-
-
-
-
 
 // // Using a this in this scenario, the this is === to the actual object itself,
 // // So this will === jonas, meaning that it should print jonas object
 // jonas.calcAge();
 
-
-
-// const matilda = { 
+// const matilda = {
 //   year: 2017,
 // }
-
 
 // // this is called method borrowing
 // matilda.calcAge = jonas.calcAge;
 // matilda.calcAge();
 
-
 // const f = jonas.calcAge;
 // f();
 
-
-
-
-// this keyword points to the object calling to the method 
+// this keyword points to the object calling to the method
 // (e.g jonas)
-// this means that it does NOT point at the object in which we wrote the method 
+// this means that it does NOT point at the object in which we wrote the method
 // (e.g not calcAge)
 
-
-
-
-// pitfalls of arrow fuctions compared to regular functions: 
+// pitfalls of arrow fuctions compared to regular functions:
 // const jonas = {
 //   firstName: 'Jonas',
 //   year: 1991,
@@ -186,19 +164,16 @@ console.log('NEW --------------------');
 //     console.log(this);
 //     console.log(2037 - this.year);
 
-
 // SOLUTION 1: CREATE A SELF KEYWORD THAT HAS TH EVARIABLE VALUE OF THE THIS KEYWORD.
-    // const self = this;
-    // const isMill = function() {
-    //   console.log(self.year >= 1981 && self.year <= 1996);
+// const self = this;
+// const isMill = function() {
+//   console.log(self.year >= 1981 && self.year <= 1996);
 
-    // };
-
+// };
 
 // SOLTUION 2: USE A FUCKING ARROW CHAIN AFTER HE CLEARLY JUST SAID DON'T USE ARROW FUNCTIONS.
 // LOL
 // ACTUALLY HE MADE PERFECT SENSE MAYBE I NEED TO HUMBLE MYSELF WHEN LISTENING TO THIS FUCKER
-
 
 //  const isMill =  () => {
 //    console.log(this.year >= 1981 && this.year <= 1996);
@@ -210,22 +185,18 @@ console.log('NEW --------------------');
 // greet: () => console.log(`Hey ${this.firstName}`),
 // };
 
-
-
 // jonas.greet();
 // jonas.calcAge();
 
-
 // // Arguments keyword
 
-// const addExpr= function (a,b) { 
+// const addExpr= function (a,b) {
 //   console.log(arguments);
 //   return a + b;
 // };
 // addExpr(2,5, 9, 293, 283);
 
-
-// var addArrow = (a, b) => { 
+// var addArrow = (a, b) => {
 //   console.log(arguments);
 //   return a + b;
 // };
@@ -234,29 +205,66 @@ console.log('NEW --------------------');
 // an arrow function does not get it's own this keyword
 // Instead it gets it from it's parent scope
 // The parent scope in this case is the global scope
-// This is because the object isn't a code block .. it's just an object literal. So all 
+// This is because the object isn't a code block .. it's just an object literal. So all
 // of this is still a part of the global keyword
-
 
 // So to repeat, an object does not have the same scope of it's own.. it's not a block
 // An object is not scope within the code, it's still treated as a global scope
 
+// let age = 30;
+// let oldAge = age;
+// age = 31;
+// console.log(age);
+// console.log(oldAge);
 
-let age = 30;
-let oldAge = age;
-age = 31;
-console.log(age);
-console.log(oldAge);
+// const me = {
+//   name: 'Jonas',
+//   age: 30,
+// };
 
+// const friend = me;
+// friend.age = 27;
 
-const me = {
-  name: 'Jonas',
-  age: 30,
+// console.log(`Friend:`, friend);
+// console.log(`me:`, me);
+
+// Primtiives vs objects in practice
+
+// Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+// Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
 };
 
-const friend = me;
-friend.age = 27;
+// Behind the scenes we are just copying the reference to the same heap in memory
+// So after changing the lastName of marriedJessica, the jessica lastName will also change
+// Because it's literally referencing the exact same heap in memory, and did NOT create
+// A new object in the heap
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage: ', jessica);
+console.log('After marriage: ', marriedJessica);
 
+// Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
 
-console.log(`Friend:`, friend);
-console.log(`me:`, me);
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log(jessica2.lastName);
+console.log(jessicaCopy.lastName);
